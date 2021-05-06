@@ -26,8 +26,6 @@ Plugin 'preservim/nerdtree'
 Plugin 'flazz/vim-colorschemes'
 " Auto pairing characters
 Plugin 'jiangmiao/auto-pairs'
-" Neocomplete - auto complete keywords
-Plugin 'Shougo/neocomplete.vim'
 " Mean & Lean status bar
 Plugin 'vim-airline/vim-airline'
 " The following are examples of different formats supported.
@@ -44,9 +42,12 @@ Plugin 'git://git.wincent.com/command-t.git'
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}
 "Dependency for vim-notes
-Plugin 'file:///home/david/Git/vim-misc'
+Plugin 'file:///%HOME%/.vim/local_plugins/vim-misc'
 " Colorscheme for note taking
-Plugin 'file:///home/david/Git/vim-notes'
+Plugin 'file:///%HOME%/.vim/local_plugins/vim-notes'
+" Enhanced syntax highlighting
+Plugin 'octol/vim-cpp-enhanced-highlight'
+
 
 "All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -195,3 +196,20 @@ colorscheme codedark
 
 " Different colorschemes
 " autocmd FileType python source /etc/vim/scripts/pychimp.vim
+
+set splitright
+autocmd VimEnter *.c,*.h NERDTree
+autocmd VimEnter *.c,*.h wincmd p
+autocmd VimEnter *.c,*.h :vert terminal
+autocmd VimEnter *.c,*.h :vertical resize 75
+autocmd VimEnter *.c,*.h wincmd p
+autocmd VimEnter *.c,*.h wincmd h
+autocmd VimEnter *.c,*.h 10 wincmd +
+autocmd VimEnter *.c,*.h wincmd p
+
+imap <c-u> <esc>viwU`^i
+nmap <c-u> viwU
+
+let mapleader = ","
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
